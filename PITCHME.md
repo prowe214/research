@@ -228,7 +228,11 @@ User overrides styles with a single theme file.  [Material2 Docs on Custom Theme
 
 ### Multiple themes
 
-With that logic, you can define multiple themes that are gated by some selector. For example, we could append the following to define a secondary dark theme:
+With that logic, you can define multiple themes that are gated by some selector.
+
+#VSLIDE
+
+For example, we could append the following to define a secondary dark theme:
 
 ```
 .unicorn-dark-theme {
