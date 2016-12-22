@@ -1,4 +1,4 @@
-# Componentization
+# Component Library
 
 As demonstrated by MaterialUI, Bootstrap, and some random people.
 
@@ -12,7 +12,7 @@ As demonstrated by MaterialUI, Bootstrap, and some random people.
 
 #VSLIDE
 
-### mui - A React component library that utilizes
+### mui - A React component library that utilizes:
 - JSX
 - Base styles
 - View encapsulation
@@ -21,15 +21,15 @@ As demonstrated by MaterialUI, Bootstrap, and some random people.
 
 #VSLIDE
 
-### JSX
+### mui = JSX = React
 
 A Hybrid of HTML and Javascript which allows javascript variable and objects to be passed directly onto an HTML element.
 
-*In ng2, we use the view model and pass controller-bound vars to HTML templates.  Separation of concerns.*
+*In ng2, we use the view model and pass controller-bound vars to HTML templates.  Separation of concerns, but same result.*
 
 #VSLIDE
 
-### Base Styles
+### Creating a `colors` module
 
 **material-ui / src / styles / colors.js**
 ```
@@ -82,6 +82,8 @@ appBar: {
 ### The Theme's palette
 
 **This is where the colors can be configured by a user**
+
+**material-ui/src/styles/baseThemes/lightBaseTheme.js**
 ```
 import {
   red500, grey400, grey500, grey600, grey700,
@@ -105,4 +107,57 @@ palette: {
     clockCircleColor: fade(darkBlack, 0.07),
     shadowColor: fullBlack,
   },
+```
+
+#VSLIDE
+
+### Default Base Styles
+
+**material-ui/src/styles/baseThemes/lightBaseTheme.js**
+```
+/**
+*  Light Theme is the default theme used in material-ui. It is guaranteed to
+*  have all theme variables needed for every component. Variables not defined
+*  in a custom theme will default to these values.
+*/
+```
+
+#HSLIDE
+
+## Material2
+
+MaterialUI for Angular 2, as used by the Angular team.
+[Repo](https://github.com/angular/material2)
+
+*Currently in Alpha*
+
+#VSLIDE
+
+### SCSS, not JS
+
+Material2 passes values through global `scss` variables.
+
+```
+[md-button], [md-icon-button] {
+  @extend %md-button-base;
+  ...
+}
+[md-icon-button] {
+  padding: 0;
+
+  // Reset the min-width from the button base.
+  min-width: 0;
+
+  width: $md-icon-button-size;
+  height: $md-icon-button-size;
+
+  flex-shrink: 0;
+
+  line-height: $md-icon-button-size;
+  border-radius: $md-icon-button-border-radius;
+
+  i, md-icon {
+    line-height: $md-icon-button-line-height;
+  }
+}
 ```
