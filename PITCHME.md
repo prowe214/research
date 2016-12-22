@@ -75,6 +75,9 @@ A modal component...
 - No use of view encapsulation
 
 ----
+
+#HSLIDE
+
 ----
 ## Material UI (mui)
 
