@@ -1,6 +1,8 @@
-# Component Library
+# Component Libraries
 
-As demonstrated by MaterialUI, Bootstrap, and some random people.
+As demonstrated by MaterialUI, Material2, and Bootstrap.
+
+[![GitPitch](https://gitpitch.com/assets/badge.svg)](https://gitpitch.com/prowe214/research/master?grs=github&t=white)
 
 ----
 
@@ -138,6 +140,8 @@ MaterialUI for Angular 2, as used by the Angular team.
 Material2 passes values through global `scss` variables.
 
 ```
+@import 'button-base';
+
 [md-button], [md-icon-button] {
   @extend %md-button-base;
   ...
@@ -161,3 +165,73 @@ Material2 passes values through global `scss` variables.
   }
 }
 ```
+
+#VSLIDE
+
+### Centralized imports
+
+Components are imported centrally through [index.ts](https://github.com/angular/material2/blob/master/src/lib/index.ts)
+
+```
+export * from './core';
+export * from './module';
+
+export * from './button/index';
+export * from './button-toggle/index';
+export * from './card/index';
+export * from './chips/index';
+export * from './checkbox/index';
+export * from './dialog/index';
+export * from './grid-list/index';
+export * from './icon/index';
+export * from './input/index';
+```
+
+#VSLIDE
+
+### Base colors
+
+Base color palette themes are created on object vars, passed in like `$md-light-theme-foreground.disabled-text`
+
+```
+// Foreground palette for light themes.
+$md-light-theme-foreground: (
+  base:            black,
+  divider:         rgba(black, 0.12),
+  dividers:        rgba(black, 0.12),
+  disabled:        rgba(black, 0.38),
+  disabled-button: rgba(black, 0.38),
+  disabled-text:   rgba(black, 0.38),
+  hint-text:       rgba(black, 0.38),
+  secondary-text:  rgba(black, 0.54),
+  icon:            rgba(black, 0.54),
+  icons:           rgba(black, 0.54),
+  text:            rgba(black, 0.87)
+);
+```
+
+#VSLIDE
+
+### Custom Themes
+
+User overrides styles with a single theme file.  [Material2 Docs on Custom Theme](https://github.com/angular/material2/blob/master/guides/theming.md#defining-a-custom-theme)
+
+#VSLIDE
+
+### Multiple themes
+
+For doing things like custom skins, you can extend the previous example to define a second (or third or fourth) theme that is gated by some selector. For example, we could append the following to the example above to define a secondary dark theme:
+
+```
+.unicorn-dark-theme {
+  $dark-primary: md-palette($md-blue-grey);
+  $dark-accent:  md-palette($md-amber, A200, A100, A400);
+  $dark-warn:    md-palette($md-deep-orange);
+
+  $dark-theme: md-dark-theme($dark-primary, $dark-accent, $dark-warn);
+
+  @include angular-material-theme($dark-theme);
+}
+```
+
+With this, any element inside of a parent with the `unicorn-dark-theme` class will use this dark theme
