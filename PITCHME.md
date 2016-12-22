@@ -29,7 +29,7 @@ Bootstrap 4 components, powered by Angular 2 and written by the angular-ui Team.
 
 ### Quick lesson on bootstrap...
 
-```
+```html
 <a class="btn btn-warn btn-lg" href="#"></a>
 ```
 - `btn` class sets base button style
@@ -42,7 +42,7 @@ This pattern of "base [...base-variant]" holds true on nearly every component/cl
 
 A modal component...
 
-```
+```javascript
 @Component({
   selector: 'ngb-modal-window',
   host: {
@@ -104,7 +104,7 @@ A Hybrid of HTML and Javascript which allows javascript variable and objects to 
 
 ### Creating a `colors` module
 
-```
+```typescript
 ...
 export const red700 = '#d32f2f';
 export const red800 = '#c62828';
@@ -132,7 +132,7 @@ export const faintBlack = 'rgba(0, 0, 0, 0.12)';
 
 ### Importing Theme
 
-```
+```typescript
 import typography from './typography';
 
 appBar: {
@@ -155,7 +155,7 @@ appBar: {
 
 **This is where the colors can be configured by a user**
 
-```
+```typescript
 import {
   red500, grey400, grey500, grey600, grey700,
   transparent, lightWhite, white, darkWhite, lightBlack, black,
@@ -185,7 +185,7 @@ palette: {
 
 ### Default Base Styles
 
-```
+```javascript
 /**
 *  Light Theme is the default theme used in material-ui. It is guaranteed to
 *  have all theme variables needed for every component. Variables not defined
@@ -210,7 +210,7 @@ MaterialUI for Angular 2, as used by the Angular team.
 
 Material2 passes values through global `scss` variables.
 
-```
+```less
 @import 'button-base';
 
 [md-button], [md-icon-button] {
@@ -243,7 +243,7 @@ Material2 passes values through global `scss` variables.
 
 Components are imported centrally through [index.ts](https://github.com/angular/material2/blob/master/src/lib/index.ts)
 
-```
+```typescript
 export * from './core';
 export * from './module';
 
@@ -264,7 +264,7 @@ export * from './input/index';
 
 Base color palette themes are created on object vars, passed in like `$md-light-theme-foreground.disabled-text`
 
-```
+```less
 // Foreground palette for light themes.
 $md-light-theme-foreground: (
   base:            black,
@@ -297,7 +297,7 @@ With that logic, you can define multiple themes that are gated by some selector.
 
 For example, we could append the following to define a secondary dark theme:
 
-```
+```less
 .unicorn-dark-theme {
   $dark-primary: md-palette($md-blue-grey);
   $dark-accent:  md-palette($md-amber, A200, A100, A400);
@@ -317,7 +317,7 @@ With this, any element inside of a parent with the `unicorn-dark-theme` class wi
 
 [Mixins](http://lesscss.org/features/#mixins-as-functions-feature) can run functions to set themes.
 
-```
+```less
 @mixin candy-carousel-theme($theme) {
   // Extract whichever individual palettes you need from the theme.
   $primary: map-get($theme, primary);
