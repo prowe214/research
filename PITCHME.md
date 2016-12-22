@@ -5,9 +5,76 @@ As demonstrated by MaterialUI, Material2, and Bootstrap.
 [![GitPitch](https://gitpitch.com/assets/badge.svg)](https://gitpitch.com/prowe214/research/master?grs=github&t=white)
 
 ----
-
 #HSLIDE
 
+## Bootstrap 4
+
+Bootstrap 4 components, powered by Angular 2 and written by the angular-ui Team.
+
+[Link](https://ng-bootstrap.github.io/#/home)
+
+[Repo](https://github.com/ng-bootstrap/ng-bootstrap)
+
+*Currently v1.0.0-alpha.15 (VERY Alpha)*
+
+#VSLIDE
+
+### CSS
+
+- One central bootstrap framework css file
+- Overwrites for specific themes.
+- Directives create class names which adopt css styles
+
+#VSLIDE
+
+### Quick lesson on bootstrap...
+
+```
+<a class="btn btn-warn btn-lg" href="#"></a>
+```
+- `btn` class sets base button style
+- `btn-warn` class sets specific colors
+- `btn-lg` class sets size
+
+This pattern of "base [...base-variant]" holds true on nearly every component/class
+
+#VSLIDE
+
+A modal component...
+
+```
+@Component({
+  selector: 'ngb-modal-window',
+  host: {
+    '[class]': '"modal fade in" + (windowClass ? " " + windowClass : "")',
+    'role': 'dialog',
+    'tabindex': '-1',
+    'style': 'display: block;',
+    '(keyup.esc)': 'escKey($event)',
+    '(click)': 'backdropClick($event)'
+  },
+  template: `
+    <div [class]="'modal-dialog' + (size ? ' modal-' + size : '')" role="document">
+        <div class="modal-content"><ng-content></ng-content></div>
+    </div>
+    `
+})
+```
+[Link to full file](https://github.com/ng-bootstrap/ng-bootstrap/blob/master/src/modal/modal-window.ts)
+
+#VSLIDE
+
+### Pros
+
+- Easily expandable with new classes
+- Consistent pattern of implementation
+
+### Cons
+
+- Complex class naming when building components
+- No use of view encapsulation
+
+----
 ----
 ## Material UI (mui)
 
@@ -123,76 +190,6 @@ palette: {
 */
 ```
 **material-ui/src/styles/baseThemes/lightBaseTheme.js**
-
-----
-#HSLIDE
-
-## Bootstrap 4
-
-Bootstrap 4 components, powered by Angular 2 and written by the angular-ui Team.
-
-[Link](https://ng-bootstrap.github.io/#/home)
-
-[Repo](https://github.com/ng-bootstrap/ng-bootstrap)
-
-*Currently v1.0.0-alpha.15 (VERY Alpha)*
-
-#VSLIDE
-
-### CSS
-
-- One central bootstrap framework css file
-- Overwrites for specific themes.
-- Directives create class names which adopt css styles
-
-#VSLIDE
-
-### Quick lesson on bootstrap...
-
-```
-<a class="btn btn-warn btn-lg" href="#"></a>
-```
-- `btn` class sets base button style
-- `btn-warn` class sets specific colors
-- `btn-lg` class sets size
-
-This pattern of "base [...base-variant]" holds true on nearly every component/class
-
-#VSLIDE
-
-A modal component...
-
-```
-@Component({
-  selector: 'ngb-modal-window',
-  host: {
-    '[class]': '"modal fade in" + (windowClass ? " " + windowClass : "")',
-    'role': 'dialog',
-    'tabindex': '-1',
-    'style': 'display: block;',
-    '(keyup.esc)': 'escKey($event)',
-    '(click)': 'backdropClick($event)'
-  },
-  template: `
-    <div [class]="'modal-dialog' + (size ? ' modal-' + size : '')" role="document">
-        <div class="modal-content"><ng-content></ng-content></div>
-    </div>
-    `
-})
-```
-[Link to full file](https://github.com/ng-bootstrap/ng-bootstrap/blob/master/src/modal/modal-window.ts)
-
-#VSLIDE
-
-### Pros
-
-- Easily expandable with new classes
-- Consistent pattern of implementation
-
-### Cons
-
-- Complex class naming when building components
-- No use of view encapsulation
 
 ----
 #HSLIDE
