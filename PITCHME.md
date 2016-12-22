@@ -42,7 +42,7 @@ This pattern of "base [...base-variant]" holds true on nearly every component/cl
 
 A modal component...
 
-```javascript
+```typescript
 @Component({
   selector: 'ngb-modal-window',
   host: {
@@ -132,9 +132,9 @@ export const faintBlack = 'rgba(0, 0, 0, 0.12)';
 
 ### Importing Theme
 
-```typescript
+```javascript
 import typography from './typography';
-
+...
 appBar: {
       color: palette.primary1Color,
       textColor: palette.alternateTextColor,
@@ -155,7 +155,7 @@ appBar: {
 
 **This is where the colors can be configured by a user**
 
-```typescript
+```javascript
 import {
   red500, grey400, grey500, grey600, grey700,
   transparent, lightWhite, white, darkWhite, lightBlack, black,
