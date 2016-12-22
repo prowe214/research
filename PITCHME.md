@@ -8,6 +8,7 @@ As demonstrated by MaterialUI, Material2, and Bootstrap.
 
 #HSLIDE
 
+----
 ## Material UI (mui)
 
 [Repo](https://github.com/callemall/material-ui)
@@ -33,7 +34,6 @@ A Hybrid of HTML and Javascript which allows javascript variable and objects to 
 
 ### Creating a `colors` module
 
-**material-ui / src / styles / colors.js**
 ```
 ...
 export const red700 = '#d32f2f';
@@ -55,14 +55,13 @@ export const darkBlack = 'rgba(0, 0, 0, 0.87)';
 export const lightBlack = 'rgba(0, 0, 0, 0.54)';
 export const minBlack = 'rgba(0, 0, 0, 0.26)';
 export const faintBlack = 'rgba(0, 0, 0, 0.12)';
-
 ```
+**material-ui / src / styles / colors.js**
 
 #VSLIDE
 
 ### Importing Theme
 
-**material-ui / src / styles / getMuiTheme.js**
 ```
 import typography from './typography';
 
@@ -78,6 +77,7 @@ appBar: {
       backgroundColor: emphasize(palette.canvasColor, 0.26),
     },
 ```
+**material-ui / src / styles / getMuiTheme.js**
 
 #VSLIDE
 
@@ -85,7 +85,6 @@ appBar: {
 
 **This is where the colors can be configured by a user**
 
-**material-ui/src/styles/baseThemes/lightBaseTheme.js**
 ```
 import {
   red500, grey400, grey500, grey600, grey700,
@@ -110,12 +109,12 @@ palette: {
     shadowColor: fullBlack,
   },
 ```
+**material-ui/src/styles/baseThemes/lightBaseTheme.js**
 
 #VSLIDE
 
 ### Default Base Styles
 
-**material-ui/src/styles/baseThemes/lightBaseTheme.js**
 ```
 /**
 *  Light Theme is the default theme used in material-ui. It is guaranteed to
@@ -123,7 +122,16 @@ palette: {
 *  in a custom theme will default to these values.
 */
 ```
+**material-ui/src/styles/baseThemes/lightBaseTheme.js**
 
+----
+#HSLIDE
+
+## Bootstrap 4
+
+
+
+----
 #HSLIDE
 
 ## Material2
@@ -220,7 +228,7 @@ User overrides styles with a single theme file.  [Material2 Docs on Custom Theme
 
 ### Multiple themes
 
-For doing things like custom skins, you can extend the previous example to define a second (or third or fourth) theme that is gated by some selector. For example, we could append the following to the example above to define a secondary dark theme:
+With that logic, you can define multiple themes that are gated by some selector. For example, we could append the following to define a secondary dark theme:
 
 ```
 .unicorn-dark-theme {
@@ -235,3 +243,39 @@ For doing things like custom skins, you can extend the previous example to defin
 ```
 
 With this, any element inside of a parent with the `unicorn-dark-theme` class will use this dark theme
+
+#VSLIDE
+
+### Using Mixins
+
+[Mixins](http://lesscss.org/features/#mixins-as-functions-feature) can run functions to set themes.
+
+```
+@mixin candy-carousel-theme($theme) {
+  // Extract whichever individual palettes you need from the theme.
+  $primary: map-get($theme, primary);
+  $accent: map-get($theme, accent);
+
+  // Use md-color to extract individual colors from a palette as necessary.
+  .candy-carousel {
+    background-color: md-color($primary);
+    border-color: md-color($accent, A400);
+  }
+}
+```
+
+#VSLIDE
+
+### Consuming
+
+Is pretty easy
+
+[Link](https://github.com/angular/material2/blob/master/guides/getting-started.md)
+
+[Example App Repo](https://github.com/jelbourn/material2-app) (Includes theme toggle, multiple types of components).  [App Link](https://material2-app.firebaseapp.com/)
+
+#VSLIDE
+
+## Conclusion
+
+Material2 is my personal pick to model after
